@@ -88,7 +88,6 @@ class Controller():
                     self.prev_note = note_key
             
             if func_key is not None:
-                
                 if func_key != 'X':
                     self.quit_counter = 0
                 if func_key != 'O':
@@ -104,14 +103,12 @@ class Controller():
                     self.change_octave(1)
                 elif func_key == '-' and self.prev_func != '-':
                     self.change_octave(-1)
-                
                 elif func_key == 'X' and self.prev_func != 'X':
                     self.quit_counter += 1
                     if self.quit_counter >= 3:
                         print("Quitting...")
                         return
                     print(f"Quit Counter: {self.quit_counter}")
-                    
                 elif func_key == 'O' and self.prev_func != 'O':
                     self.reset_counter += 1
                     if self.reset_counter >= 3:
@@ -128,10 +125,10 @@ class Controller():
         for row in range(4):
             for col in range(4):
                 self.note_row_pins[row].high()
-                
                 if self.note_col_pins[col].value() == 1:
                     self.note_row_pins[row].low()
                     return NOTEPAD[row][col]
+                          
             self.note_row_pins[row].low()
         return None
     
@@ -141,10 +138,10 @@ class Controller():
         for row in range(4):
             for col in range(4):
                 self.func_row_pins[row].high()
-                
                 if self.func_col_pins[col].value() == 1:
                     self.func_row_pins[row].low()
                     return FUNCPAD[row][col]
+                          
             self.func_row_pins[row].low()
         return None
     
